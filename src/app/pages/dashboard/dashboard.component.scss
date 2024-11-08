@@ -1,0 +1,192 @@
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  padding: 0 2rem 0 0;
+  gap: 1rem;
+
+  .header-part {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header-location {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      .location-font {
+        font-family: "Lato", sans-serif;
+        color: #fff;
+        font-size: 1rem;
+      }
+    }
+
+    .search-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      align-items: center;
+      justify-content: center;
+      background-color: #131621bd;
+      border: 1px solid #8098a1;
+    }
+  }
+
+  .mid-part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .m-p-temp {
+      display: flex;
+      width: 60%;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
+
+      .deg {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .deg-label {
+          font-size: 4rem;
+          color: #fff;
+        }
+      }
+
+      .high-low-deg {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+
+        .capsule {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          border-radius: 20px;
+          height: auto;
+          width: 5rem;
+          padding: 0 5px;
+          font-size: 12px;
+          border: 1px solid #8098a1;
+          background-color: #131621bd;
+          color: #fff;
+
+          span {
+            color: #8098a1;
+          }
+        }
+      }
+    }
+
+    .m-p-desc {
+      display: flex;
+      width: 40%;
+
+      .desc-lbl {
+        font-size: 14px;
+        font-family: "Lato", sans-serif;
+        color: #fff;
+        line-height: 125%;
+      }
+    }
+  }
+
+  .next-mid-part {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 3rem;
+
+    .n-m-p-quote {
+      display: flex;
+      width: 60%;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
+      background: linear-gradient(90deg, #13162100, #131621bd, #13162100);
+
+      .quote {
+        font-size: 3.5rem;
+        line-height: 120%;
+        font-family: "Lato", sans-serif;
+        color: #86a7b3;
+      }
+    }
+
+    .recently-searched {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 5px;
+      margin-top: -2rem;
+
+      .r-s-label {
+        font-size: 12px;
+        color: #fff;
+        font-family: "Lato", sans-serif;
+      }
+
+      .recently-searched-card {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+
+        .recent-card {
+          width: 50%;
+          height: 8rem;
+          background-color: #131621bd;
+          border-radius: 30px;
+          border: 1px solid #8098a1;
+
+          .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+            padding: 1rem;
+
+            .card-deg {
+              font-size: 1.5rem;
+              color: #fff;
+              font-family: "Lato", sans-serif;
+            }
+          }
+
+          .card-bot {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 4rem;
+            padding: 0 1rem;
+
+            .card-add {
+              font-size: 1rem;
+              color: #fff;
+              font-family: "Lato", sans-serif;
+            }
+            .card-stat {
+              font-size: 12px;
+              color: #8098a1;
+              font-family: "Lato", sans-serif;
+            }
+          }
+        }
+      }
+    }
+  }
+}
