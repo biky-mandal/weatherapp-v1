@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href 'https://biky-mandal.github.io/weatherapp-v1/'",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "npx angular-cli-ghpages --dir=dist/weatherapp-v1"
   },
   "private": true,
   "dependencies": {
