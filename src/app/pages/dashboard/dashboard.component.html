@@ -1,79 +1,73 @@
 <div class="dashboard-content">
-  <div class="header-part">
-    <div class="header-location">
-      <mat-icon class="icon-color-w">location_on</mat-icon>
-      <span class="location-font"
-        ><b
-          >{{ weatherData.location.name }}, {{ weatherData.location.region }} ,
-          {{ weatherData.location.country }}</b
-        >
-        ({{ weatherData.location.localtime | date : "medium" }})</span
-      >
+    <div class="header-part">
+        <div class="header-location">
+            <mat-icon class="icon-color-w">location_on</mat-icon>
+            <span class="location-font"><b>{{ weatherData?.location?.name }}, {{ weatherData?.location?.region }} ,
+                    {{ weatherData?.location?.country }}</b>
+                ({{ weatherData?.location?.localtime | date : "medium" }})</span>
+        </div>
+
+        <button class="search-btn" (click)="openDialog()">
+            <mat-icon class="icon-color-w">manage_search</mat-icon>
+        </button>
     </div>
 
-    <button class="search-btn" (click)="openDialog()">
-      <mat-icon class="icon-color-w">manage_search</mat-icon>
-    </button>
-  </div>
+    <div class="mid-part">
+        <div class="m-p-temp">
+            <div class="deg">
+                <img [src]="weatherData?.current?.condition?.icon" alt="icon0" />
+                <span class="deg-label">{{ weatherData?.current?.temp_c }}°</span>
+            </div>
+            <div class="high-low-deg">
+                <div class="capsule">
+                    <span>H</span>
+                    {{ weatherData?.forecast?.forecastday[0]?.day?.maxtemp_c }}°
+                </div>
+                <div class="capsule">
+                    <span>L</span>
+                    {{ weatherData?.forecast?.forecastday[0]?.day?.mintemp_c }}°
+                </div>
+            </div>
+        </div>
+        <div class="m-p-desc">
+            <span class="desc-lbl">{{weatherData?.alerts?.alert[0]?.headline ? weatherData?.alerts?.alert[0].headline :
+                'No alert Found!'}}</span>
+        </div>
+    </div>
 
-  <div class="mid-part">
-    <div class="m-p-temp">
-      <div class="deg">
-        <span class="deg-label">{{ weatherData.current.temp_c }}°</span>
-      </div>
-      <div class="high-low-deg">
-        <div class="capsule">
-          <span>H</span>
-          {{ weatherData.forecast.forecastday[0].day.maxtemp_c }}°
+    <div class="next-mid-part">
+        <div class="n-m-p-quote">
+            <span class="quote">{{ weatherData?.current?.condition?.text }}</span>
         </div>
-        <div class="capsule">
-          <span>L</span>
-          {{ weatherData.forecast.forecastday[0].day.mintemp_c }}°
+        <div class="recently-searched">
+            <span class="r-s-label">Recently Searched</span>
+            <div class="recently-searched-card">
+                <ng-container *ngFor="let recentData of recentWeatherData">
+                    <div class="recent-card" (click)="fetchFromRecentLocation(recentData?.location)">
+                        <div class="card-top">
+                            <img style="height: 2.5rem; width: auto" [src]="recentData?.icon"
+                                [alt]="recentData?.location" />
+                            <span class="card-deg">{{recentData?.temp}}°</span>
+                        </div>
+                        <div class="card-bot">
+                            <span class="card-add">{{recentData?.location}}</span>
+                            <span class="card-stat">{{recentData?.text}}</span>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="!recentWeatherData">
+                    <span class="r-s-label">No data!</span>
+                </ng-container>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="m-p-desc">
-      <span class="desc-lbl"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nam
-        perspiciatis quo maxime recusandae eligendi eveniet cumque, voluptatum,
-        sint voluptas, exercitationem quod corrupti esse! Consequuntur
-        perferendis animi dolore ea hic!</span
-      >
-    </div>
-  </div>
 
-  <div class="next-mid-part">
-    <div class="n-m-p-quote">
-      <span class="quote">{{ weatherData.current.condition.text }}</span>
+    <div class="forcast-part">
+        <ng-container *ngIf="!loading">
+            <app-forcast-chart></app-forcast-chart>
+        </ng-container>
+        <ng-container *ngIf="loading">
+            <span class="r-s-label">Loading!</span>
+        </ng-container>
     </div>
-    <div class="recently-searched">
-      <span class="r-s-label">Recently Searched</span>
-      <div class="recently-searched-card">
-        <div class="recent-card">
-          <div class="card-top">
-            <mat-icon class="icon-color-w">cloud</mat-icon>
-            <span class="card-deg">18°</span>
-          </div>
-          <div class="card-bot">
-            <span class="card-add">Lanka, Assam</span>
-            <span class="card-stat">Partly Cloudy</span>
-          </div>
-        </div>
-        <div class="recent-card">
-          <div class="card-top">
-            <mat-icon class="icon-color-w">cloud</mat-icon>
-            <span class="card-deg">18°</span>
-          </div>
-          <div class="card-bot">
-            <span class="card-add">Lanka, Assam</span>
-            <span class="card-stat">Partly Cloudy</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="forcast-part">
-    <app-forcast-chart></app-forcast-chart>
-  </div>
 </div>

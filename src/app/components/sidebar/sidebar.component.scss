@@ -1,16 +1,59 @@
-.sidebar-content{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0 0 2rem;
+.sidebar-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 2rem;
 }
 
-.sidebar-overlay{
-    width: 80%;
-    border: 1px solid #8098a1;
-    height: 90%;
-    border-radius: 2rem;
-    background-color: #131621bd;
+.sidebar-overlay {
+  width: 80%;
+  border: 1px solid #8098a1;
+  height: 90%;
+  border-radius: 2rem;
+  background-color: #131621bd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+.side-header {
+  font-family: "Lato", sans-serif;
+  color: #fff;
+  font-size: 1rem;
+}
+.side-text{
+    font-family: "Lato", sans-serif;
+    color: #8098a1;
+    font-size: 1rem;
+}
+.other-info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1 1 auto;
+    max-height: 18rem;
+    padding-top: 1rem;
+
+    .other-info-card{
+        padding: 10px 1rem;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .card-text{
+            font-family: "Lato", sans-serif;
+            color: #8098a1;
+            font-size: 12px;
+        }
+
+        .card-value{
+            font-family: "Lato", sans-serif;
+            color: #ffffff;
+            font-size: 14px;
+        }
+    }
 }

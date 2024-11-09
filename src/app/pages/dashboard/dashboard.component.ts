@@ -18,8 +18,10 @@ import { SnackbarService } from '../../services/snackbar.service';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
-  location: string = '';
-  weatherData: any = {};
+  location: string = 'Guwahati';
+  weatherData: any = null;
+  recentWeatherData: any = {};
+  loading: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -29,6 +31,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchForcustDetails();
+    this.apiServ.recentWeatherData.subscribe((data: any) => {
+      this.recentWeatherData = data;
+      console.log(data);
+    });
   }
 
   openDialog(): void {
@@ -48,17 +54,36 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchForcustDetails = (): void => {
+    this.loading = true;
+    if (this.weatherData) {
+      const obj: any = {
+        text: this.weatherData?.current?.condition?.text,
+        temp: this.weatherData?.current?.temp_c,
+        location: this.weatherData?.location?.name,
+        icon: this.weatherData?.current?.condition?.icon,
+      };
+      this.apiServ.addRecentSearch(obj);
+    }
+
     this.weatherData = [];
     this.apiServ.fetchForcustDetails(this.location).subscribe({
       next: (res: any[]) => {
-        console.log(res);
         this.weatherData = res;
         this.apiServ.weatherData.next(this.weatherData);
+        this.loading = false;
       },
       error: (err: any) => {
         console.log(err);
         this._snack.showError('Failed to fetch Weather Condition!');
+        this.loading = false;
       },
     });
+  };
+
+  fetchFromRecentLocation = (locate: string): void => {
+    this.location = locate;
+    if (this.location) {
+      this.fetchForcustDetails();
+    }
   };
 }
