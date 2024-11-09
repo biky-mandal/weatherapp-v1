@@ -19,6 +19,7 @@ export class ForcastChartComponent implements OnInit, OnDestroy {
     values: [],
   };
 
+  // Chart configuration
   chartConfig: any = {
     type: 'line',
     data: {
@@ -93,12 +94,19 @@ export class ForcastChartComponent implements OnInit, OnDestroy {
     },
   };
 
+  // Dependency Injection
   constructor(private apiServ: ApisService) {}
 
+  // Day mode is implement in the graph
+  // Hourly mode can also been done. In Below code we are generating hourly data also.
+  // in this.hourlyData
+  // In configuration replace labels and values with this.hourlyData to show hourly view
+
   ngOnInit(): void {
+    // As soon as it gets the data it will format the data for graph
     this.apiServ.weatherData.subscribe((data: any) => {
       data?.forecast?.forecastday.map((d: any) => {
-        this.daylyData.labels.push(d?.date);
+        this.daylyData.labels.push(d?.date.slice(-2));
         this.daylyData.values.push(d?.day?.avgtemp_c);
 
         d.hour.map((h: any) => {
@@ -108,10 +116,13 @@ export class ForcastChartComponent implements OnInit, OnDestroy {
       });
       // Before ploting graph we need to destroy the canvas
       Chart.getChart('canvas')?.destroy();
+
+      // Rendering graphs to component
       this.chart = new Chart('canvas', this.chartConfig);
     });
   }
 
+  // It will clear the canvus when component got unmount
   ngOnDestroy(): void {
     Chart.getChart('canvas')?.destroy();
   }

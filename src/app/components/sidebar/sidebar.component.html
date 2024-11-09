@@ -2,47 +2,56 @@
     <div class="sidebar-overlay">
         <span class="side-header">How's the Day!</span>
 
-        <img src="//cdn.weatherapi.com/weather/64x64/night/113.png" />
-        <span class="side-text">Misty</span>
+        <img style="width: 5rem; height: 5rem" [src]="weatherData?.current?.condition?.icon" alt="icon01" />
+        <span class="side-text">{{weatherData?.current?.condition?.text}}</span>
 
         <div class="other-info">
             <div class="other-info-card">
-                <span class="card-value">4.7 Kph</span>
+                <span class="card-value">{{weatherData?.current?.wind_kph}} Kph</span>
                 <span class="card-text">Wind speed</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">E</span>
+                <span class="card-value">{{weatherData?.current?.wind_dir}}</span>
                 <span class="card-text">Wind Dir</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">79</span>
+                <span class="card-value">{{weatherData?.current?.humidity}}</span>
                 <span class="card-text">Humidity</span>
             </div>
 
             <div class="other-info-card">
-                <span class="card-value">29.8 in</span>
+                <span class="card-value">{{weatherData?.current?.pressure_in}} in</span>
                 <span class="card-text">Pressure</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">0</span>
+                <span class="card-value">{{weatherData?.current?.uv}}</span>
                 <span class="card-text">UV</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">34</span>
+                <span class="card-value">{{weatherData?.current?.feelslike_c}}</span>
                 <span class="card-text">Feels like</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">29.8</span>
+                <span class="card-value">{{weatherData?.current?.air_quality?.co}}</span>
                 <span class="card-text">CO</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">0</span>
+                <span class="card-value">{{weatherData?.current?.air_quality?.o3}}</span>
                 <span class="card-text">O3</span>
             </div>
             <div class="other-info-card">
-                <span class="card-value">34</span>
+                <span class="card-value">{{weatherData?.current?.air_quality?.so2}}</span>
                 <span class="card-text">SO2</span>
             </div>
+        </div>
+
+        <div class="location-side">
+            <span>{{ weatherData?.location?.name }} <br>
+                {{ weatherData?.location?.region }},
+                {{ weatherData?.location?.country }}</span>
+        </div>
+        <div class="location-side">
+            <span style="color: rgba(95, 102, 109, 0.356); font-size: 10px;">Developed By: Biky Mandal</span>
         </div>
     </div>
 </div>

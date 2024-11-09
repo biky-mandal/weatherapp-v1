@@ -1,7 +1,10 @@
 <div class="layout-div">
-    <img class="background" src='assets/Rainy.jpg' alt="background-img" />
+    <img class="background" [src]='activeBG' alt="background-img" />
     <div class="content">
         <app-sidebar class="content-left-part"></app-sidebar>
         <app-dashboard class="content-right-part"></app-dashboard>
+    </div>
+    <div class="loading-overlay" *ngIf="loading">
+        <mat-spinner></mat-spinner>
     </div>
 </div>

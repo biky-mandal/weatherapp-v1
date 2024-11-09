@@ -16,3 +16,15 @@
 .mat-mdc-snackbar-surface {
   background-color: #87192e96 !important;
 }
+
+[mode="day"] {
+  --color-primary-bg: #1e2020bd;
+  --color-secondary-bg: #1e2020bd;
+  --color-seconday-text: #f0e6bb;
+}
+
+[mode="night"] {
+  --color-primary-bg: #131621bd;
+  --color-secondary-bg: #131621bd;
+  --color-seconday-text: #86a7b3;
+}

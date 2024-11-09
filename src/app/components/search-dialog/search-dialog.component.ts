@@ -12,8 +12,9 @@ import { SnackbarService } from '../../services/snackbar.service';
 export class SearchDialogComponent {
   name: string = '';
   searchedString: string = '';
-  options: string[] = [];
+  options: string[] = []; // options to show suggested location in search box
   timerExec: any = '';
+  loading: boolean = false;
   constructor(
     private dialogRef: MatDialogRef<SearchDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -38,20 +39,26 @@ export class SearchDialogComponent {
   };
 
   searchLocationHandler = () => {
-    console.log('Calling!');
+    this.loading = true;
+    this.options = []; // restting to minimize redundant data
+
+    // Subscribing to observable API call
     this.apiServ.fetchSearchedLocations(this.searchedString).subscribe({
       next: (res: any[]) => {
         res.map((loc: any) => {
           this.options.push(loc.name);
         });
+        this.loading = false;
       },
       error: (err: any) => {
         console.log(err);
         this._snack.showError('API Failed!');
+        this.loading = false;
       },
     });
   };
 
+  // To close the dailog
   onNoClick(): void {
     this.dialogRef.close();
   }

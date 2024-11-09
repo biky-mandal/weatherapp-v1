@@ -8,11 +8,14 @@ import { ApisService } from '../../services/apis.service';
 })
 export class SidebarComponent implements OnInit {
   weatherData: any = {};
+
+  // Depenency Injection
   constructor(private apiServ: ApisService) {}
 
   ngOnInit(): void {
-    console.log(
-      this.apiServ.weatherData.subscribe((data: any) => console.log(data))
-    );
+    // Subscribing to the Weather data
+    this.apiServ.weatherData.subscribe((data: any) => {
+      this.weatherData = data;
+    });
   }
 }

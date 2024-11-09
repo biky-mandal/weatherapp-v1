@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ForcastChartComponent } from './components/forcast-chart/forcast-chart.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ForcastChartComponent } from './components/forcast-chart/forcast-chart.
     MatInputModule,
     MatAutocompleteModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [HttpClientModule, provideAnimationsAsync()],
   bootstrap: [AppComponent],

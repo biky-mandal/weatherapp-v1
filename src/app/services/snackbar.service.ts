@@ -13,6 +13,7 @@ export class SnackbarService {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   constructor(private _snack: MatSnackBar) {}
 
+  // Snackbar/alert to show quick message
   showError(msg: string): void {
     this._snack.open(msg, 'Close', {
       horizontalPosition: this.horizontalPosition,

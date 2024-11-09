@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Search Location</h2>
 <div class="dialog-div">
-    <mat-dialog-content style="width: 100%;">
+    <mat-dialog-content style="width: 100%; display: flex; flex-direction: column;">
         <mat-form-field appearance="outline">
             <mat-label>Please enter location</mat-label>
             <input type="text" placeholder="Pick one" aria-label="Number" (input)="inputChangeHandler($event)" matInput
@@ -9,6 +9,7 @@
                 <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
             </mat-autocomplete>
         </mat-form-field>
+        <span *ngIf="loading">Fetching locations...</span>
     </mat-dialog-content>
     <mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
