@@ -1,65 +1,79 @@
 <div class="dashboard-content">
-    <div class="header-part">
-        <div class="header-location">
-            <mat-icon class="icon-color-w">location_on</mat-icon>
-            <span class="location-font"><b>Lanka, Assam</b> (Friday, 24th October, 2024)</span>
-        </div>
-
-        <button class="search-btn">
-            <mat-icon class="icon-color-w">manage_search</mat-icon>
-        </button>
+  <div class="header-part">
+    <div class="header-location">
+      <mat-icon class="icon-color-w">location_on</mat-icon>
+      <span class="location-font"
+        ><b
+          >{{ weatherData.location.name }}, {{ weatherData.location.region }} ,
+          {{ weatherData.location.country }}</b
+        >
+        ({{ weatherData.location.localtime | date : "medium" }})</span
+      >
     </div>
 
-    <div class="mid-part">
-        <div class="m-p-temp">
-            <div class="deg">
-                <span class="deg-label">18°</span>
-            </div>
-            <div class="high-low-deg">
-                <div class="capsule"><span>H</span> 29°</div>
-                <div class="capsule"><span>L</span> 12°</div>
-            </div>
-        </div>
-        <div class="m-p-desc">
-            <span class="desc-lbl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nam perspiciatis quo
-                maxime recusandae
-                eligendi eveniet cumque, voluptatum, sint voluptas, exercitationem quod corrupti esse! Consequuntur
-                perferendis animi dolore ea hic!</span>
-        </div>
-    </div>
+    <button class="search-btn" (click)="openDialog()">
+      <mat-icon class="icon-color-w">manage_search</mat-icon>
+    </button>
+  </div>
 
-    <div class="next-mid-part">
-        <div class="n-m-p-quote">
-            <span class="quote">Stormy with Partly Cloudy</span>
+  <div class="mid-part">
+    <div class="m-p-temp">
+      <div class="deg">
+        <span class="deg-label">{{ weatherData.current.temp_c }}°</span>
+      </div>
+      <div class="high-low-deg">
+        <div class="capsule">
+          <span>H</span>
+          {{ weatherData.forecast.forecastday[0].day.maxtemp_c }}°
         </div>
-        <div class="recently-searched">
-            <span class="r-s-label">Recently Searched</span>
-            <div class="recently-searched-card">
-                <div class="recent-card">
-                    <div class="card-top">
-                        <mat-icon class="icon-color-w">cloud</mat-icon>
-                        <span class="card-deg">18°</span>
-                    </div>
-                    <div class="card-bot">
-                        <span class="card-add">Lanka, Assam</span>
-                        <span class="card-stat">Partly Cloudy</span>
-                    </div>
-                </div>
-                <div class="recent-card">
-                    <div class="card-top">
-                        <mat-icon class="icon-color-w">cloud</mat-icon>
-                        <span class="card-deg">18°</span>
-                    </div>
-                    <div class="card-bot">
-                        <span class="card-add">Lanka, Assam</span>
-                        <span class="card-stat">Partly Cloudy</span>
-                    </div>
-                </div>
-            </div>
+        <div class="capsule">
+          <span>L</span>
+          {{ weatherData.forecast.forecastday[0].day.mintemp_c }}°
         </div>
+      </div>
     </div>
-
-    <div class="forcast-part">
-
+    <div class="m-p-desc">
+      <span class="desc-lbl"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nam
+        perspiciatis quo maxime recusandae eligendi eveniet cumque, voluptatum,
+        sint voluptas, exercitationem quod corrupti esse! Consequuntur
+        perferendis animi dolore ea hic!</span
+      >
     </div>
+  </div>
+
+  <div class="next-mid-part">
+    <div class="n-m-p-quote">
+      <span class="quote">{{ weatherData.current.condition.text }}</span>
+    </div>
+    <div class="recently-searched">
+      <span class="r-s-label">Recently Searched</span>
+      <div class="recently-searched-card">
+        <div class="recent-card">
+          <div class="card-top">
+            <mat-icon class="icon-color-w">cloud</mat-icon>
+            <span class="card-deg">18°</span>
+          </div>
+          <div class="card-bot">
+            <span class="card-add">Lanka, Assam</span>
+            <span class="card-stat">Partly Cloudy</span>
+          </div>
+        </div>
+        <div class="recent-card">
+          <div class="card-top">
+            <mat-icon class="icon-color-w">cloud</mat-icon>
+            <span class="card-deg">18°</span>
+          </div>
+          <div class="card-bot">
+            <span class="card-add">Lanka, Assam</span>
+            <span class="card-stat">Partly Cloudy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="forcast-part">
+    <app-forcast-chart></app-forcast-chart>
+  </div>
 </div>

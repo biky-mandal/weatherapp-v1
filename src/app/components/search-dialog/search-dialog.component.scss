@@ -1,0 +1,10 @@
+.dialog-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .mat-mdc-dialog-content > :last-child {
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
